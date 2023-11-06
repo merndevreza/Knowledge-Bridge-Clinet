@@ -13,22 +13,23 @@ import Swal from "sweetalert2";
 //==============
 const Header = () => {
   //dark light toggler
-  const [isDark, setIsDark] = useState(true);
-  const [theme,setTheme]=useState(localStorage.getItem("theme") ? localStorage.getItem("theme"):"light")
-  
-const handleDarkLight = () => {
-  setIsDark(!isDark);
-  if (theme=== "dark") {
-    setTheme("light")
-  }else{
-    setTheme("dark")
-  }
-};
-useEffect(()=>{
-  localStorage.setItem("theme",theme)
-  const localTheme= localStorage.getItem("theme");
-  document.querySelector("html").setAttribute("data-theme",localTheme)
-},[theme])
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+  const handleDarkLight = () => {
+    if (theme === "dark") {
+      setTheme("light");
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    } else {
+      setTheme("dark");
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+    }
+  };
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const { currentUser, logOutUser } = useContext(AuthContext);
   //mobile Menu
@@ -61,7 +62,9 @@ useEffect(()=>{
     <div className="bg-[#04102e]">
       <header className="container mx-auto py-4 flex justify-between items-center">
         <div className="order-2 lg:order-1">
-          <Link to="/"><img className="max-h-[100px]" src={logo} alt="" /></Link>
+          <Link to="/">
+            <img className="max-h-[100px]" src={logo} alt="" />
+          </Link>
         </div>
         <nav className="order-1 lg:order-2">
           <button
@@ -106,7 +109,7 @@ useEffect(()=>{
         </nav>
         <div className="order-last flex items-center gap-2">
           <button className="mr-6" onClick={handleDarkLight}>
-            {isDark ? (
+            {theme==="dark" ? (
               <FiSun className="text-[#fff] text-[35px]" />
             ) : (
               <IoIosMoon className="text-[#fff] text-[35px]" />

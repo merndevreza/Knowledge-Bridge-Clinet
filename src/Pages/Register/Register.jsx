@@ -92,13 +92,13 @@ const Register = () => {
    return (
       <div>
          
-      <div className="bg-[#f4f4f4] py-14 md:py-24 lg:py-28 px-2">
-        <div className="bg-[#fff] max-w-3xl mx-auto px-6 md:px-12 py-10 md:py-20">
-          <h2 className="text-4xl mb-9 text-theme-black font-semibold">Sign Up</h2>
+      <div className="dark:bg-theme-dark bg-theme-light py-14 md:py-24 lg:py-28 px-2">
+        <div className="dark:bg-theme-dark-top bg-white max-w-3xl mx-auto px-6 md:px-12 py-10 md:py-20">
+          <h2 className="text-4xl mb-9 dark:text-white  text-theme-black font-semibold">Sign Up</h2>
           <form className="flex flex-col gap-3 text-theme-black " onSubmit={handleRegister}>
             <div className="flex relative items-center mb-3 rounded-md  ">
               <label
-                className="p-3 absolute rounded-md bg-theme text-white"
+                className="p-3 absolute rounded-md bg-theme"
                 htmlFor="name"
               >
                 <FaUser></FaUser>
@@ -114,7 +114,7 @@ const Register = () => {
             </div>
             <div className="flex relative items-center mb-3 rounded-md  ">
               <label
-                className="p-3 absolute rounded-md bg-theme text-white"
+                className="p-3 absolute rounded-md bg-theme "
                 htmlFor="email"
               >
                 <FaEnvelope></FaEnvelope>
@@ -130,7 +130,7 @@ const Register = () => {
             </div>
             <div className="flex relative items-center mb-3 rounded-md  ">
               <label
-                className="p-3 absolute rounded-md bg-theme text-white"
+                className="p-3 absolute rounded-md bg-theme "
                 htmlFor="photo"
               >
                 <FaCamera></FaCamera>
@@ -145,7 +145,7 @@ const Register = () => {
             </div>
             <div className="flex relative items-center mb-3 rounded-md  ">
               <label
-                className="p-3 absolute rounded-md bg-theme text-white"
+                className="p-3 absolute rounded-md bg-theme "
                 htmlFor="password"
               >
                 <FaKey></FaKey>
@@ -165,7 +165,7 @@ const Register = () => {
                 {isShown ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
               </button>
             </div>
-            <div className="py-3 text-theme-black ">
+            <div className="py-3 text-theme-black dark:text-white ">
               <input type="checkbox" id="checkTerms" name="checkTerms" />
               <label className="pl-2" htmlFor="checkTerms">
                 Please accept our
@@ -186,8 +186,8 @@ const Register = () => {
             </div>
           </form>
         </div>
-        <div className="mt-8 bg-[#fff] max-w-3xl mx-auto md:px-12 px-6 py-6 md:py-14 flex flex-col md:flex-row justify-between items-center gap-4">
-          <h2 className="text-2xl font-semibold text-theme-black ">Already Have Account?</h2>
+        <div className="mt-8  dark:bg-theme-dark-top bg-white  max-w-3xl mx-auto md:px-12 px-6 py-6 md:py-14 flex flex-col md:flex-row justify-between items-center gap-4">
+          <h2 className="text-2xl font-semibold dark:text-white  text-theme-black ">Already Have Account?</h2>
           <Link to="/login">
             <button className=" btn border-none px-12 rounded-none bg-theme-golden text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-red">
               Login

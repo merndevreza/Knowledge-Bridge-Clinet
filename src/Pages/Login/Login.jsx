@@ -68,13 +68,13 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="bg-[#f4f4f4] py-14 md:py-24 lg:py-28 px-2">
-        <div className="bg-[#fff] max-w-3xl mx-auto px-6 md:px-12 py-10 md:py-20">
-          <h2 className="text-4xl text-theme-black mb-9 font-semibold">Login</h2>
+      <div className="dark:bg-theme-dark bg-theme-light py-14 md:py-24 lg:py-28 px-2">
+        <div className="dark:bg-theme-dark-top bg-white  max-w-3xl mx-auto px-6 md:px-12 py-10 md:py-20">
+          <h2 className="text-4xl dark:text-white  text-theme-black mb-9 font-semibold">Login</h2>
           <form className="flex flex-col text-theme-black gap-3" onSubmit={handleLogin}>
             <div className="flex relative items-center mb-3 rounded-md  ">
               <label
-                className="p-3 absolute rounded-md bg-theme text-white"
+                className="p-3 absolute rounded-md bg-theme text-theme-black"
                 htmlFor="email"
               >
                 <FaEnvelope></FaEnvelope>
@@ -90,7 +90,7 @@ const Login = () => {
             </div>
             <div className="flex relative items-center mb-3 rounded-md  ">
               <label
-                className="p-3 absolute rounded-md bg-theme text-white"
+                className="p-3 absolute rounded-md bg-theme text-theme-black"
                 htmlFor="password"
               >
                 <FaKey></FaKey>
@@ -112,28 +112,32 @@ const Login = () => {
             </div>
             <div className="mt-3">
               <input
-                className="btn border-none rounded-none bg-theme-golden px-12 text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-red"
+                className="btn border-none rounded-none bg-theme-golden px-12 text-white  cursor-pointer text-lg font-medium hover:bg-theme-hover-red"
                 type="submit"
                 value="Login"
               />
             </div>
           </form>
-          <h2 className="text-xl text-theme-black  font-semibold mt-9 mb-4">
+          <div className="relative text-center before:w-full before:h-[2px] before:bg-theme-black dark:before:bg-white  before:absolute before:left-0 mt-20 mb-4">
+          <h2 className="text-xl dark:text-white  bg-white text-theme-black font-semibold dark:bg-theme-dark-top inline-block relative -top-3  px-4 ">
             You can also login with,
           </h2>
+          </div>
+          <div className="text-center">
           <button
             onClick={handleGoogleLogin}
-            className="btn bg-transparent border-2 border-theme-orange-red px-4 text-lg text-theme-orange-red hover:border-theme-orange-red  
-          hover:bg-[#e515151c]
+            className="btn bg-transparent border-2 border-theme-golden px-4 text-lg hover:bg-theme-golden text-theme-golden hover:text-white  hover:border-theme-golden
+          
           rounded-none"
           >
             <FcGoogle></FcGoogle> Google
           </button>
+          </div>
         </div>
-        <div className="mt-8 bg-[#fff] max-w-3xl mx-auto md:px-12 px-6 py-6 md:py-14 flex flex-col md:flex-row justify-between items-center gap-4">
-          <h2 className="text-2xl font-semibold text-theme-black ">New Customer?</h2>
+        <div className="mt-8 dark:bg-theme-dark-top bg-white  max-w-3xl mx-auto md:px-12 px-6 py-6 md:py-14 flex flex-col md:flex-row justify-between items-center gap-4">
+          <h2 className="text-2xl font-semibold dark:text-white  text-theme-black ">New Customer?</h2>
           <Link to="/register">
-            <button className=" btn border-none px-8 rounded-none bg-theme-golden text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-red">
+            <button className=" btn border-none px-8 rounded-none bg-theme-golden text-white  cursor-pointer text-lg font-medium hover:bg-theme-hover-red">
               Create Account
             </button>
           </Link>
