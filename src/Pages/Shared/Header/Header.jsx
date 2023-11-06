@@ -1,24 +1,67 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo/logo-2.png";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RiMenuLine } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
+import { FiSun } from "react-icons/fi";
+import { IoIosMoon } from "react-icons/io";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 //==============
 // component
 //==============
 const Header = () => {
+  //dark light toggler
+  const [isDark, setIsDark] = useState(true);
+  const [theme,setTheme]=useState(localStorage.getItem("theme") ? localStorage.getItem("theme"):"light")
+  
+const handleDarkLight = () => {
+  setIsDark(!isDark);
+  if (theme=== "dark") {
+    setTheme("light")
+  }else{
+    setTheme("dark")
+  }
+};
+useEffect(()=>{
+  localStorage.setItem("theme",theme)
+  const localTheme= localStorage.getItem("theme");
+  document.querySelector("html").setAttribute("data-theme",localTheme)
+},[theme])
+
+  const { currentUser, logOutUser } = useContext(AuthContext);
   //mobile Menu
   const [isOpen, setIsOpen] = useState(false);
   const handleMobileMenu = () => {
     setIsOpen(!isOpen);
+  };
+  //logout
+  const handleLogout = () => {
+    logOutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Congrats!!",
+          text: `You successfully Logged in`,
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: `${error.message}`,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
   };
   //
   return (
     <div className="bg-[#04102e]">
       <header className="container mx-auto py-4 flex justify-between items-center">
         <div className="order-2 lg:order-1">
-          <img className="max-h-[100px]" src={logo} alt="" />
+          <Link to="/"><img className="max-h-[100px]" src={logo} alt="" /></Link>
         </div>
         <nav className="order-1 lg:order-2">
           <button
@@ -31,7 +74,7 @@ const Header = () => {
             className={
               isOpen
                 ? "flex flex-col gap-4  text-xl font-medium font-sulphur pl-6 absolute z-30 left-0 top-0 h-screen w-1/3 bg-theme-black text-[#fff] "
-                : "hidden lg:flex gap-5 text-[#fff]  text-xl font-medium font-sulphur "
+                : "hidden lg:flex gap-6 text-[#fff]  text-xl font-medium font-sulphur "
             }
           >
             <div className={isOpen ? " text-right mt-4 mr-4" : "hidden"}>
@@ -54,20 +97,48 @@ const Header = () => {
               <NavLink to="/borrowed-books">Borrowed Books</NavLink>
             </li>
             <li>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/add-book">Add Book</NavLink>
             </li>
             <li>
-              <NavLink to="/register">Register</NavLink>
+              <NavLink to="/login">Login</NavLink>
             </li>
           </ul>
         </nav>
-          <div className="order-last">
-          <Link to="/login">
-            <button className="btn bg-theme-golden rounded-none border-none px-10 text-lg  text-[#fff]">
-              Login
+        <div className="order-last flex items-center gap-2">
+          <button className="mr-6" onClick={handleDarkLight}>
+            {isDark ? (
+              <FiSun className="text-[#fff] text-[35px]" />
+            ) : (
+              <IoIosMoon className="text-[#fff] text-[35px]" />
+            )}
+          </button>
+          {currentUser?.photoURL ? (
+            <img
+              className="h-[35px] md:h-[45px] rounded-full"
+              src={currentUser.photoURL}
+              alt="User Avatar"
+            />
+          ) : (
+            ""
+          )}
+          <p className="text-[#fff] font-medium text-xl  mr-3 hidden lg:block">
+            {currentUser ? currentUser.displayName : ""}
+          </p>
+          {currentUser ? (
+            <button
+              onClick={handleLogout}
+              className="btn bg-theme-golden rounded-none border-none px-10 text-lg  text-[#fff]"
+            >
+              Logout
             </button>
-          </Link>
-          </div>
+          ) : (
+            <Link to="/login">
+              <button className="btn bg-theme-golden rounded-none border-none px-10 text-lg  text-[#fff]">
+                Login
+              </button>
+            </Link>
+          )}
+        </div>
       </header>
     </div>
   );
