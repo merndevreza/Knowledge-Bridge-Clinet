@@ -123,7 +123,7 @@ const AddBook = () => {
             </div>
             <div className="mt-3">
               <input
-                className="btn border-none rounded-none bg-theme-golden px-12 text-[#fff] cursor-pointer text-lg  hover:bg-theme-hover-red"
+                className="btn border-none rounded-none bg-theme-golden hover:bg-theme-hover-golden px-12 text-[#fff] cursor-pointer text-lg  "
                 type="submit"
                 value="Add Book"
               />

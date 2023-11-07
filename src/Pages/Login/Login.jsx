@@ -4,10 +4,11 @@ import Swal from "sweetalert2";
 
 import { FaEnvelope, FaEye, FaEyeSlash, FaKey } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin,githubLogin } = useContext(AuthContext);
   const [isShown, setIsShown] = useState(false);
    const location = useLocation();
    const navigate = useNavigate();
@@ -66,6 +67,28 @@ const Login = () => {
         return;
       });
   };
+  const handleGithubLogin=()=>{
+    githubLogin()
+    .then(() => {
+      Swal.fire({
+        title: "Congrats!!",
+        text: `You successfully Logged in`,
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      Swal.fire({
+        title: "Error!",
+        text: `${errorMessage}`,
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    });
+  }
   return (
     <div>
       <div className="dark:bg-theme-dark bg-theme-light py-14 md:py-24 lg:py-28 px-2">
@@ -112,7 +135,7 @@ const Login = () => {
             </div>
             <div className="mt-3">
               <input
-                className="btn border-none rounded-none bg-theme-golden px-12 text-white  cursor-pointer text-lg font-medium hover:bg-theme-hover-red"
+                className="btn border-none rounded-none bg-theme-golden hover:bg-theme-hover-golden px-12 text-white  cursor-pointer text-lg font-medium"
                 type="submit"
                 value="Login"
               />
@@ -126,18 +149,26 @@ const Login = () => {
           <div className="text-center">
           <button
             onClick={handleGoogleLogin}
-            className="btn bg-transparent border-2 border-theme-golden px-4 text-lg hover:bg-theme-golden text-theme-golden hover:text-white  hover:border-theme-golden
+            className="btn bg-transparent border-2 border-theme-black px-4 text-lg hover:bg-theme-golden text-theme-black hover:text-white  hover:border-theme-golden
           
           rounded-none"
           >
             <FcGoogle></FcGoogle> Google
+          </button>
+          <button
+            onClick={handleGithubLogin}
+            className="btn bg-transparent border-2 border-theme-black px-4 text-lg hover:bg-theme-golden text-theme-black hover:text-white  hover:border-theme-golden
+          ml-3
+          rounded-none"
+          >
+            <AiFillGithub></AiFillGithub> Github
           </button>
           </div>
         </div>
         <div className="mt-8 dark:bg-theme-dark-top bg-white  max-w-3xl mx-auto md:px-12 px-6 py-6 md:py-14 flex flex-col md:flex-row justify-between items-center gap-4">
           <h2 className="text-2xl font-semibold dark:text-white  text-theme-black ">New Customer?</h2>
           <Link to="/register">
-            <button className=" btn border-none px-8 rounded-none bg-theme-golden text-white  cursor-pointer text-lg font-medium hover:bg-theme-hover-red">
+            <button className=" btn border-none px-8 rounded-none bg-theme-golden hover:bg-theme-hover-golden text-white  cursor-pointer text-lg">
               Create Account
             </button>
           </Link>

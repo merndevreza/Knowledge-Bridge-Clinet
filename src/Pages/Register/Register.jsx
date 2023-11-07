@@ -168,18 +168,18 @@ const Register = () => {
             <div className="py-3 text-theme-black dark:text-white ">
               <input type="checkbox" id="checkTerms" name="checkTerms" />
               <label className="pl-2" htmlFor="checkTerms">
-                Please accept our
+                Please accept our 
                 <Link
-                  className="font-medium underline underline-offset-2"
+                  className="font-medium ml-2 underline underline-offset-2"
                   to="/"
                 >
-                  Terms & Conditions
+                   Terms & Conditions
                 </Link>
               </label>
             </div>
             <div className="mt-3">
               <input
-                className="btn border-none rounded-none bg-theme-golden px-12 text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-red"
+                className="btn border-none rounded-none bg-theme-golden px-12 text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-golden"
                 type="submit"
                 value="Register"
               />
@@ -189,7 +189,7 @@ const Register = () => {
         <div className="mt-8  dark:bg-theme-dark-top bg-white  max-w-3xl mx-auto md:px-12 px-6 py-6 md:py-14 flex flex-col md:flex-row justify-between items-center gap-4">
           <h2 className="text-2xl font-semibold dark:text-white  text-theme-black ">Already Have Account?</h2>
           <Link to="/login">
-            <button className=" btn border-none px-12 rounded-none bg-theme-golden text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-red">
+            <button className=" btn border-none px-12 rounded-none bg-theme-golden hover:bg-theme-hover-golden text-[#fff] cursor-pointer text-lg font-medium hover:bg-theme-hover-red">
               Login
             </button>
           </Link>
