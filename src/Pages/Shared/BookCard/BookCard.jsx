@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import "../BookCard/BookCard.css";
 import { Link } from "react-router-dom";
-const BookCard = ({ book }) => {
+
+
+
+const BookCard = ({ book,btnName,btnLink }) => {
   const {_id, bookName, authorName, photo, category, rating } = book;
   const countStars = (rating) => {
     const totalStars = 5;
@@ -49,8 +52,8 @@ const BookCard = ({ book }) => {
           </h2>
           <h3 className="text-xl text-center dark:text-white">{authorName}</h3>
         </div>
-        <Link to={`/update-book/${_id}`}><button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl mt-5 font-bold text-white">
-          Update
+        <Link to={`/${btnLink}/${_id}`}><button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl mt-5 font-bold text-white">
+          {btnName}
         </button></Link>
       </div>
     </div>
@@ -58,5 +61,7 @@ const BookCard = ({ book }) => {
 };
 BookCard.propTypes = {
   book: PropTypes.object,
+  btnName:PropTypes.string,
+  btnLink:PropTypes.string
 };
 export default BookCard;

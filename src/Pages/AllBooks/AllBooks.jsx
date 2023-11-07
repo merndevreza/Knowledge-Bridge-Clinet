@@ -59,7 +59,7 @@ const AllBooks = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-4 lg:gap-5 xl:gap-8 ">
           {books.map((book) => (
-            <BookCard key={book._id} book={book}></BookCard>
+            <BookCard btnName={"Update"} btnLink={"update-book"}  key={book._id} book={book}></BookCard>
           ))}
         </div>
       </div>
