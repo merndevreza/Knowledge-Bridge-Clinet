@@ -54,10 +54,6 @@
    content: '';
    position: absolute;
    background: url('../../../assets/images/bookpattren.png') no-repeat;
-   -webkit-background-size: 100% 100%;
-   -moz-background-size: 100% 100%;
-   -ms-background-size: 100% 100%;
-   -o-background-size: 100% 100%;
    background-size: 100% 100%;
 }
 .book-card:hover .book-card-img {

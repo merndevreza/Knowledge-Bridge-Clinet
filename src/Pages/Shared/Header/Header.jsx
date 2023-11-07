@@ -19,17 +19,17 @@ const Header = () => {
   const handleDarkLight = () => {
     if (theme === "dark") {
       setTheme("light");
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
     } else {
       setTheme("dark");
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
     }
   };
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    document.documentElement.classList.add('light');
+    document.documentElement.classList.add("light");
   }, [theme]);
 
   const { currentUser, logOutUser } = useContext(AuthContext);
@@ -61,16 +61,20 @@ const Header = () => {
   //
   return (
     <div className="bg-[#04102e]">
-      <header className="container mx-auto py-4 flex justify-between items-center">
-        <div className="order-2 lg:order-1">
+      <header className="container mx-auto py-4 px-2 flex justify-between items-center">
+        <div className="order-2 xl:order-1">
           <Link to="/">
-            <img className="max-h-[100px]" src={logo} alt="" />
+            <img
+              className="max-h-[70px] md:max-h-[80px] lg:max-h-[100px]"
+              src={logo}
+              alt=""
+            />
           </Link>
         </div>
-        <nav className="order-1 lg:order-2">
+        <nav className="order-1 xl:order-2">
           <button
             onClick={handleMobileMenu}
-            className="text-2xl border-2 p-1 text-[#fff] lg:hidden"
+            className="text-2xl border-2 p-1 text-[#fff] xl:hidden"
           >
             <RiMenuLine></RiMenuLine>
           </button>
@@ -78,7 +82,7 @@ const Header = () => {
             className={
               isOpen
                 ? "flex flex-col gap-4  text-xl font-medium font-sulphur pl-6 absolute z-30 left-0 top-0 h-screen w-1/3 bg-theme-black text-[#fff] "
-                : "hidden lg:flex gap-6 text-[#fff]  text-xl font-medium font-sulphur "
+                : "hidden xl:flex gap-6 text-[#fff]  text-xl font-medium font-sulphur"
             }
           >
             <div className={isOpen ? " text-right mt-4 mr-4" : "hidden"}>
@@ -94,23 +98,35 @@ const Header = () => {
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
-            <li>
-              <NavLink to="/all-books">All Books</NavLink>
-            </li>
-            <li>
-              <NavLink to="/borrowed-books">Borrowed Books</NavLink>
-            </li>
-            <li>
-              <NavLink to="/add-book">Add Book</NavLink>
-            </li>
+            {currentUser ? (
+              <li>
+                <NavLink to="/all-books">All Books</NavLink>
+              </li>
+            ) : (
+              ""
+            )}
+            {currentUser ? (
+              <li>
+                <NavLink to="/borrowed-books">Borrowed Books</NavLink>
+              </li>
+            ) : (
+              ""
+            )}
+            {currentUser ? (
+              <li>
+                <NavLink to="/add-book">Add Book</NavLink>
+              </li>
+            ) : (
+              ""
+            )}
             <li>
               <NavLink to="/login">Login</NavLink>
             </li>
           </ul>
         </nav>
         <div className="order-last flex items-center gap-2">
-          <button className="mr-6" onClick={handleDarkLight}>
-            {theme==="dark" ? (
+          <button className="lg:mr-5" onClick={handleDarkLight}>
+            {theme === "dark" ? (
               <FiSun className="text-[#fff] text-[35px]" />
             ) : (
               <IoIosMoon className="text-[#fff] text-[35px]" />
@@ -125,23 +141,25 @@ const Header = () => {
           ) : (
             ""
           )}
-          <p className="text-[#fff] font-medium text-xl  mr-3 hidden lg:block">
+          <p className="text-[#fff] font-medium text-xl  mr-3 hidden xl:block">
             {currentUser ? currentUser.displayName : ""}
           </p>
-          {currentUser ? (
-            <button
-              onClick={handleLogout}
-              className="btn bg-theme-golden hover:bg-theme-hover-golden  rounded-none border-none px-10 text-lg  text-[#fff]"
-            >
-              Logout
-            </button>
-          ) : (
-            <Link to="/login">
-              <button className="btn bg-theme-golden hover:bg-theme-hover-golden rounded-none border-none px-10 text-lg  text-[#fff]">
-                Login
+          <div className="hidden md:block">
+            {currentUser ? (
+              <button
+                onClick={handleLogout}
+                className="btn bg-theme-golden hover:bg-theme-hover-golden  rounded-none border-none px-10 text-xl  text-[#fff]"
+              >
+                Logout
               </button>
-            </Link>
-          )}
+            ) : (
+              <Link to="/login">
+                <button className="btn bg-theme-golden hover:bg-theme-hover-golden rounded-none border-none px-10 text-xl  text-[#fff]">
+                  Login
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       </header>
     </div>

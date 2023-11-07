@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import "../BookCard/BookCard.css";
+import { Link } from "react-router-dom";
 const BookCard = ({ book }) => {
-  const { bookName, authorName, photo, category, rating } = book;
+  const {_id, bookName, authorName, photo, category, rating } = book;
   const countStars = (rating) => {
     const totalStars = 5;
     const stars = [];
@@ -38,19 +39,19 @@ const BookCard = ({ book }) => {
             {category}
           </p>
           <div className="flex text-theme-hover-golden">
-            {countStars(Number(rating.split("-")[0]))}
+            {countStars(rating)}
           </div>
         </div>
-        <div className="w-full h-[2px] bg-[#ddd] my-3"></div>
+        <div className="w-full h-[2px] bg-[#c6c6c6]  my-3"></div>
         <div className="min-h-[100px] flex flex-col justify-between">
           <h2 className="text-2xl font-bold text-center dark:text-white">
             {bookName}
           </h2>
           <h3 className="text-xl text-center dark:text-white">{authorName}</h3>
         </div>
-        <button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl mt-5 font-bold text-white">
+        <Link to={`/update-book/${_id}`}><button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl mt-5 font-bold text-white">
           Update
-        </button>
+        </button></Link>
       </div>
     </div>
   );
