@@ -29,6 +29,7 @@ const Header = () => {
   };
   useEffect(() => {
     localStorage.setItem("theme", theme);
+    document.documentElement.classList.add('light');
   }, [theme]);
 
   const { currentUser, logOutUser } = useContext(AuthContext);

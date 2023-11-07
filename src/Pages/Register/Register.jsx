@@ -104,7 +104,7 @@ const Register = () => {
                 <FaUser></FaUser>
               </label>
               <input
-                className="w-full  font-medium placeholder:font-normal pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
+                className="w-full   pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
                 type="text"
                 name="name"
                 placeholder="Name*"
@@ -120,7 +120,7 @@ const Register = () => {
                 <FaEnvelope></FaEnvelope>
               </label>
               <input
-                className="w-full  font-medium placeholder:font-normal pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
+                className="w-full   pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
                 type="email"
                 name="email"
                 placeholder="Email*"
@@ -136,7 +136,7 @@ const Register = () => {
                 <FaCamera></FaCamera>
               </label>
               <input
-                className="w-full  font-medium placeholder:font-normal pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
+                className="w-full   pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
                 type="url"
                 name="photo"
                 placeholder="Photo url"
@@ -151,7 +151,7 @@ const Register = () => {
                 <FaKey></FaKey>
               </label>
               <input
-                className="w-full  font-medium placeholder:font-normal pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
+                className="w-full   pl-12 py-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
                 type={isShown ? "text" : "password"}
                 name="password"
                 placeholder="Create password*"
