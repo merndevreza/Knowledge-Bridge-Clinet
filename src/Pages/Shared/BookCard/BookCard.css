@@ -1,0 +1,66 @@
+.book-card-img-wrapper {
+   padding-right: 2%;
+   padding-bottom: 2%;
+ }
+ .book-card-img {
+   transition: all 0.3s ease-in-out;
+   position: relative;
+ }
+.book-card-img-front {
+  position: relative;
+  z-index: 2;
+}
+.book-card-img-front::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 8%,
+    rgba(0, 0, 0, 0.1) 5%,
+    rgba(0, 0, 0, 0) 13%
+  );
+  z-index: 999;
+  left: 0;
+  top: 0;
+}
+.book-card-img-back {
+  top: 2%;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 96%;
+  overflow: hidden;
+  background: #000;
+  position: absolute;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+.book-card-img-back img{
+   opacity: 0.5;
+}
+.book-card:hover .book-card-img-back {
+   left: 18px;
+   opacity: 1;
+}
+.book-card-img-back:after {
+   top: 4%;
+   right: 3px;
+   z-index: 2;
+   width: 15px;
+   height: 98%;
+   content: '';
+   position: absolute;
+   background: url('../../../assets/images/bookpattren.png') no-repeat;
+   -webkit-background-size: 100% 100%;
+   -moz-background-size: 100% 100%;
+   -ms-background-size: 100% 100%;
+   -o-background-size: 100% 100%;
+   background-size: 100% 100%;
+}
+.book-card:hover .book-card-img {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(0deg);
+}

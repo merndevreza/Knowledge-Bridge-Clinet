@@ -71,10 +71,9 @@ const Register = () => {
                 confirmButtonText: "OK",
               });
             });
-          const success = "You registered successfully.";
           Swal.fire({
             title: "Congrats!!",
-            text: `${ success }`,
+            text: "You registered successfully.",
             icon: "success",
             confirmButtonText: "OK",
           });

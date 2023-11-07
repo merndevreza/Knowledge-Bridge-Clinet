@@ -1,3 +1,6 @@
+import axios from "axios";
+import Swal from "sweetalert2";
+
 const AddBook = () => {
   const handleAddBook = (e) => {
     e.preventDefault();
@@ -9,15 +12,30 @@ const AddBook = () => {
     const category = form.get("category");
     const rating = form.get("rating");
     const shortDescription = form.get("shortDescription");
-    console.log(
+    const content = form.get("content");
+    const book={
       bookName,
       authorName,
       photo,
       quantity,
       category,
       rating,
-      shortDescription
-    );
+      shortDescription,
+      content
+    }
+      axios.post("http://localhost:5000/books",book)
+      .then(res=>{
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Congrats!!",
+            text: "Successfully added a book",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      })
+
   };
   return (
     <div>
@@ -113,12 +131,22 @@ const AddBook = () => {
             </div>
             <div className="mb-3 ">
               <textarea
+                className="w-full bg-theme-light dark:bg-white placeholder:font-normal p-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
                 name="shortDescription"
-                className="w-full bg-theme-light dark:bg-white    placeholder:font-normal p-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
                 id="shortDescription"
                 cols="81"
-                rows="10"
+                rows="5"
                 placeholder="Short Description"
+              ></textarea>
+            </div>
+            <div className="mb-3 ">
+              <textarea
+                className="w-full bg-theme-light dark:bg-white    placeholder:font-normal p-2 placeholder:text-[#6c757d] border-b border-[#c9c9c9] focus:outline-none focus:border-[#615F5C]"
+                name="content"
+                id="content"
+                cols="81"
+                rows="10"
+                placeholder="Some Content of the Book..."
               ></textarea>
             </div>
             <div className="mt-3">

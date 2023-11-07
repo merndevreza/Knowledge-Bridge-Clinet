@@ -12,7 +12,7 @@ export default {
      },
     colors: {
       "theme-golden": "#DEA004",
-      "theme-hover-golden": "#e39511ed",
+      "theme-hover-golden": "#e39511",
       "theme-black": "#04102E",
       "theme-dark":"#0f172a",
       "theme-dark-top":"#1e293b",

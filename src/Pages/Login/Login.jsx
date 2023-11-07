@@ -149,17 +149,15 @@ const Login = () => {
           <div className="text-center">
           <button
             onClick={handleGoogleLogin}
-            className="btn bg-transparent border-2 border-theme-black px-4 text-lg hover:bg-theme-golden text-theme-black hover:text-white  hover:border-theme-golden
-          
-          rounded-none"
+            className="btn bg-transparent border-2 border-theme-black dark:border-theme-golden px-4 text-lg hover:bg-theme-golden dark:text-theme-golden text-theme-black hover:text-white dark:hover:text-theme-black  hover:border-theme-golden
+            rounded-none"
           >
             <FcGoogle></FcGoogle> Google
           </button>
           <button
             onClick={handleGithubLogin}
-            className="btn bg-transparent border-2 border-theme-black px-4 text-lg hover:bg-theme-golden text-theme-black hover:text-white  hover:border-theme-golden
-          ml-3
-          rounded-none"
+            className="btn bg-transparent border-2 border-theme-black dark:border-theme-golden px-4 text-lg hover:bg-theme-golden dark:text-theme-golden text-theme-black hover:text-white dark:hover:text-theme-black  hover:border-theme-golden
+          ml-3 rounded-none"
           >
             <AiFillGithub></AiFillGithub> Github
           </button>

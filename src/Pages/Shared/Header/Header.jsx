@@ -131,13 +131,13 @@ const Header = () => {
           {currentUser ? (
             <button
               onClick={handleLogout}
-              className="btn bg-theme-golden rounded-none border-none px-10 text-lg  text-[#fff]"
+              className="btn bg-theme-golden hover:bg-theme-hover-golden  rounded-none border-none px-10 text-lg  text-[#fff]"
             >
               Logout
             </button>
           ) : (
             <Link to="/login">
-              <button className="btn bg-theme-golden rounded-none border-none px-10 text-lg  text-[#fff]">
+              <button className="btn bg-theme-golden hover:bg-theme-hover-golden rounded-none border-none px-10 text-lg  text-[#fff]">
                 Login
               </button>
             </Link>

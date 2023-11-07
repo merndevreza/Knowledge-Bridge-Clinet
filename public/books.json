@@ -1,0 +1,122 @@
+[
+   {
+     "bookName": "The Wisdom of Ages",
+     "authorName": "John Smith",
+     "photo": "https://i.ibb.co/dPCHn5z/img-01.jpg",
+     "quantity": 25,
+     "category": "religious",
+     "rating": "5-star",
+     "shortDescription": "The Wisdom of Ages is a profound exploration of spiritual insights and teachings from various faiths and traditions. This book delves deep into the essence of religion, offering readers a unique perspective on the common threads that connect us all. With wisdom spanning centuries, this book is a treasure trove of inspiration and enlightenment.",
+     "content": "In the beginning, there was light. The light of understanding that has guided humanity throughout its history. This book takes you on a journey through the sacred texts and ancient teachings that have shaped our beliefs and values. From the wisdom of the East to the insights of the West, The Wisdom of Ages is a timeless collection of spiritual guidance."
+   },
+   {
+     "bookName": "The Art of Innovation",
+     "authorName": "Emily Johnson",
+     "photo": "https://i.ibb.co/18NP0WG/img-02.jpg",
+     "quantity": 18,
+     "category": "business",
+     "rating": "4-star",
+     "shortDescription": "The Art of Innovation is a groundbreaking work that uncovers the secrets of the world's most innovative companies. It provides valuable insights into how to foster creativity and drive groundbreaking change in your organization. Learn from the best in the business and transform your company's future.",
+     "content": "In today's fast-paced business world, innovation is the key to success. This book takes you behind the scenes of companies like Apple, Google, and Amazon to reveal the strategies that have propelled them to the forefront of the market. With practical advice and real-world examples, The Art of Innovation is your guide to creating a culture of creativity and continuous improvement."
+   },
+   {
+     "bookName": "Einstein: A Life in Science",
+     "authorName": "Michael Brown",
+     "photo": "https://i.ibb.co/ZHvNy68/img-03.jpg",
+     "quantity": 12,
+     "category": "biography",
+     "rating": "5-star",
+     "shortDescription": "Einstein: A Life in Science is a comprehensive biography that delves into the fascinating life of the world's most renowned physicist. Follow Albert Einstein's journey from his early years in Germany to his groundbreaking discoveries in the world of physics.",
+     "content": "Albert Einstein, a name synonymous with genius, revolutionized our understanding of the universe. In this gripping biography, we explore his childhood, struggles, and the momentous achievements that made him a household name. From the theory of relativity to his role in shaping the atomic age, Einstein's life in science is a remarkable tale of perseverance and brilliance."
+   },
+   {
+     "bookName": "The Art of Culinary Delights",
+     "authorName": "Sophia Martinez",
+     "photo": "https://i.ibb.co/ww5HXbj/img-04.jpg",
+     "quantity": 20,
+     "category": "cooking",
+     "rating": "4-star",
+     "shortDescription": "The Art of Culinary Delights is a culinary journey that explores the world of fine dining and gourmet cuisine. From exquisite recipes to the art of plating, this book is a must-have for food enthusiasts and aspiring chefs.",
+     "content": "Indulge your senses in a culinary adventure like no other. The Art of Culinary Delights takes you on a gastronomic tour of the world's most delectable dishes. Discover the secrets of master chefs, learn the art of creating memorable meals, and elevate your cooking skills to new heights. Whether you're a seasoned cook or a novice in the kitchen, this book is your passport to the world of culinary excellence."
+   },
+   {
+     "bookName": "A Journey Through History",
+     "authorName": "David Anderson",
+     "photo": "https://i.ibb.co/gSyZynY/img-05.jpg",
+     "quantity": 15,
+     "category": "history",
+     "rating": "4-star",
+     "shortDescription": "A Journey Through History is an engaging exploration of the key events, figures, and epochs that have shaped human history. From ancient civilizations to modern revolutions, this book offers a captivating narrative of our past.",
+     "content": "History is a tapestry of stories, each thread weaving a unique narrative of our collective past. A Journey Through History takes you on a guided tour of the world's most pivotal moments, from the rise and fall of empires to the birth of modern democracies. With vivid storytelling and insightful analysis, this book is an essential companion for history enthusiasts."
+   },
+   {
+     "bookName": "The Science of Wonder",
+     "authorName": "Olivia Roberts",
+     "photo": "https://i.ibb.co/pbTcNQ4/img-06.jpg",
+     "quantity": 22,
+     "category": "science",
+     "rating": "5-star",
+     "shortDescription": "The Science of Wonder is a captivating journey into the mysteries of the natural world. Explore the realms of physics, biology, and astronomy to unravel the secrets that make our universe truly wondrous.",
+     "content": "Science is the language of discovery, and The Science of Wonder is your guide to the wonders of the universe. Delve into the intricacies of the cosmos, from the tiniest particles to the vastness of space. This book will ignite your curiosity and take you on an extraordinary expedition through the world of science."
+   },
+   {
+     "bookName": "The Healing Power of Mindfulness",
+     "authorName": "Linda Johnson",
+     "photo": "https://i.ibb.co/z4hKHFy/img-07.jpg",
+     "quantity": 17,
+     "category": "health",
+     "rating": "4-star",
+     "shortDescription": "The Healing Power of Mindfulness is a transformative guide to the practice of mindfulness and its profound impact on mental and physical well-being. Discover how mindfulness can reduce stress, enhance focus, and bring balance to your life.",
+     "content": "In our fast-paced world, finding moments of tranquility is essential for overall health and happiness. The Healing Power of Mindfulness teaches you the art of being present, reducing stress, and nurturing your mental and physical well-being. With practical exercises and insightful guidance, this book will help you unlock the healing potential of mindfulness."
+   },
+   {
+     "bookName": "The Art of Brush Strokes",
+     "authorName": "Lucas Turner",
+     "photo": "https://i.ibb.co/X3M0sJ0/img-08.jpg",
+     "quantity": 14,
+     "category": "art",
+     "rating": "3-star",
+     "shortDescription": "The Art of Brush Strokes is a comprehensive guide to the world of painting and artistic expression. From mastering different brush techniques to creating captivating artworks, this book is an essential resource for aspiring artists.",
+     "content": "Embark on a creative journey with The Art of Brush Strokes. This book unveils the secrets of painting and the art of visual expression. Whether you're a novice artist or an experienced painter, you'll find inspiration and guidance to enhance your skills and bring your artistic visions to life."
+   },
+   {
+     "bookName": "The Medical Revolution",
+     "authorName": "Dr. Elizabeth Adams",
+     "photo": "https://i.ibb.co/2W06YCK/img-09.jpg",
+     "quantity": 11,
+     "category": "medical",
+     "rating": "5-star",
+     "shortDescription": "The Medical Revolution is a groundbreaking exploration of the evolution of medicine. Discover the innovative breakthroughs and dedicated individuals who have transformed healthcare and saved countless lives.",
+     "content": "Medicine has come a long way, from ancient remedies to cutting-edge treatments. The Medical Revolution takes you on a journey through the history of healthcare, highlighting the pivotal moments, medical pioneers, and life-saving innovations that have shaped the field of medicine."
+   },
+   {
+     "bookName": "The Literary Odyssey",
+     "authorName": "Eleanor Smith",
+     "photo": "https://i.ibb.co/h1TbBBf/img-10.jpg",
+     "quantity": 16,
+     "category": "literature",
+     "rating": "4-star",
+     "shortDescription": "The Literary Odyssey is a captivating exploration of the world's most celebrated literary works. From timeless classics to modern masterpieces, this book offers a journey through the pages of history and imagination.",
+     "content": "Great literature has the power to transport us to different worlds, evoke deep emotions, and provoke profound thoughts. The Literary Odyssey introduces you to the works of literary giants, providing insight into their lives and the enduring impact of their creations. Join us on a journey through the rich tapestry of human storytelling."
+   },
+   {
+     "bookName": "Discovering the Universe",
+     "authorName": "Sophie Williams",
+     "photo": "https://i.ibb.co/PZVKfVJ/img-11.jpg",
+     "quantity": 13,
+     "category": "science",
+     "rating": "4-star",
+     "shortDescription": "Discovering the Universe is an awe-inspiring exploration of the cosmos. Uncover the mysteries of the universe, from the birth of stars to the search for extraterrestrial life.",
+     "content": "The universe is a vast and enigmatic frontier, waiting to be explored. Discovering the Universe invites you to embark on an interstellar adventure, unraveling the secrets of the cosmos. With stunning visuals and profound insights, this book is your window to the wonders of space and the endless possibilities that lie beyond."
+   },
+   {
+     "bookName": "Adventures in the Kitchen",
+     "authorName": "James Turner",
+     "photo": "https://i.ibb.co/2cy2MDS/img-12.jpg",
+     "quantity": 19,
+     "category": "cooking",
+     "rating": "5-star",
+     "shortDescription": "Adventures in the Kitchen is a culinary odyssey that takes you on a journey through the world's most delectable dishes. From exotic flavors to traditional classics, this book is a culinary treasure trove.",
+     "content": "The kitchen is a realm of endless possibilities, and Adventures in the Kitchen is your passport to culinary excellence. Explore the vibrant tapestry of global cuisine, experiment with new flavors, and create memorable meals that will delight your taste buds and amaze your guests."
+   }
+ ]
