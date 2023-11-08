@@ -22,7 +22,7 @@ const UpdateBook = () => {
       rating,
       quantity
     };
-    axios.patch(`http://localhost:5000/books/${_id}`,updateBook)
+    axios.patch(`https://b8a11-server-side-merndevreza.vercel.app/books/${_id}`,updateBook)
     .then(res=>{
       console.log(res.data);
       if (res.data.modifiedCount >0) {

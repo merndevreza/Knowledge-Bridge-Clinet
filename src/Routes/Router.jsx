@@ -57,24 +57,24 @@ const router = createBrowserRouter([
       },
       {
          path:"/update-book/:id",
-         loader:({params})=>fetch(`http://localhost:5000/books/${params.id}`),
+         loader:({params})=>fetch(`https://b8a11-server-side-merndevreza.vercel.app/books/${params.id}`),
          element:<PrivateRoutes><UpdateBook></UpdateBook></PrivateRoutes>
       },
       {
          path:"/category/:id",
-         loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`),
+         loader:({params})=>fetch(`https://b8a11-server-side-merndevreza.vercel.app/category/${params.id}`),
          element:<PrivateRoutes><CategoryPage></CategoryPage></PrivateRoutes>
       },
       {
          path:"/details/:id",
-         loader:({params})=>fetch(`http://localhost:5000/books/${params.id}`),
+         loader:({params})=>fetch(`https://b8a11-server-side-merndevreza.vercel.app/books/${params.id}`),
          element:<PrivateRoutes>
             <BookDetails></BookDetails>
          </PrivateRoutes>
       },
       {
          path:"/read/:id",
-         loader:({params})=>fetch(`http://localhost:5000/books/${params.id}`),
+         loader:({params})=>fetch(`https://b8a11-server-side-merndevreza.vercel.app/books/${params.id}`),
          element:<PrivateRoutes>
             <ReadBook></ReadBook>
          </PrivateRoutes>

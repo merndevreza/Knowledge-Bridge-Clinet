@@ -9,7 +9,7 @@ const BorrowedBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/borrowed-books/${currentUser.email}`)
+      .get(`https://b8a11-server-side-merndevreza.vercel.app/borrowed-books/${currentUser.email}`)
       .then((res) => {
         setLoadedBorrowedBooks(res.data);
       })
@@ -20,7 +20,7 @@ const BorrowedBooks = () => {
 
   const handleReturnNow = (id) => {
     axios
-      .delete(`http://localhost:5000/borrowed-books/${id}`)
+      .delete(`https://b8a11-server-side-merndevreza.vercel.app/borrowed-books/${id}`)
       .then((res) => {
         if (res.data.deletedCount > 0) {
           Swal.fire({
@@ -30,7 +30,7 @@ const BorrowedBooks = () => {
             confirmButtonText: "OK",
           });
           axios
-          .get(`http://localhost:5000/borrowed-books/${currentUser.email}`)
+          .get(`https://b8a11-server-side-merndevreza.vercel.app/borrowed-books/${currentUser.email}`)
           .then((res) => {
             setLoadedBorrowedBooks(res.data);
           })

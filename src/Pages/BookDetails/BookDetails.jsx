@@ -52,7 +52,7 @@ const BookDetails = () => {
       returnDate,
     };
     axios
-      .post("http://localhost:5000/borrowed-books", borrowedBook)
+      .post("https://b8a11-server-side-merndevreza.vercel.app/borrowed-books", borrowedBook)
       .then((res) => {
         setAvailableQuantity(availableQuantity - 1);
         if (res.data.insertedId) {
@@ -76,7 +76,7 @@ const BookDetails = () => {
         bookName, authorName, photo, category, rating,
         quantity: availableQuantity
       }
-      axios.patch(`http://localhost:5000/books/${_id}`,updateBookQuantity)
+      axios.patch(`https://b8a11-server-side-merndevreza.vercel.app/books/${_id}`,updateBookQuantity)
       .then(res=>{
         console.log(res.data);
       })
@@ -89,7 +89,7 @@ const BookDetails = () => {
 //   const [isBorrowed, setIsBorrowed]= useState(false)
 //   const [userBorrowedBooks, setUserBorrowedBooks]=useState([])
 //   useEffect(()=>{
-//     axios.get(`http://localhost:5000/borrowed-books/${currentUser.email}`)
+//     axios.get(`https://b8a11-server-side-merndevreza.vercel.app/borrowed-books/${currentUser.email}`)
 //     .then(res=>{
 //       setUserBorrowedBooks(res.data)
 //     })
