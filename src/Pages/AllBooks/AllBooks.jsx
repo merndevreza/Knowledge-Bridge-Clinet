@@ -9,7 +9,7 @@ const AllBooks = () => {
   const { currentUser } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get("https://b8a11-server-side-merndevreza.vercel.app/books")
+      .get("https://b8a11-server-side-merndevreza.vercel.app/books",{withCredentials:true})
       .then((res) => {
         setLoadedBooks(res.data);
         setBooks(res.data);

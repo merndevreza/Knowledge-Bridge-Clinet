@@ -23,7 +23,7 @@ const AddBook = () => {
       shortDescription,
       content
     }
-      axios.post("https://b8a11-server-side-merndevreza.vercel.app/books",book)
+      axios.post("https://b8a11-server-side-merndevreza.vercel.app/books",book,{withCredentials:true})
       .then(res=>{
         console.log(res.data);
         if (res.data.insertedId) {
