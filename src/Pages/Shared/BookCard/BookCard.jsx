@@ -1,25 +1,12 @@
 import PropTypes from "prop-types";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import "../BookCard/BookCard.css";
 import { Link } from "react-router-dom";
+import Ratings from "../Ratings/Ratings";
 
 
 
 const BookCard = ({ book,btnName,btnLink }) => {
   const {_id, bookName, authorName, photo, category, rating } = book;
-  const countStars = (rating) => {
-    const totalStars = 5;
-    const stars = [];
-    for (let i = 0; i < totalStars; i++) {
-      if (i < rating) {
-        stars.push(<AiFillStar key={i} />);
-      } else {
-        stars.push(<AiOutlineStar key={i} />);
-      }
-    }
-    return stars;
-  };
-
   return (
     <div className="mb-5 book-card">
       <div className="book-card-img-wrapper">
@@ -41,8 +28,8 @@ const BookCard = ({ book,btnName,btnLink }) => {
           <p className=" inline-block px-5 py-2 bg-[#fce7b2] text-sm font-bold rounded-full text-theme-black uppercase">
             {category}
           </p>
-          <div className="flex text-theme-hover-golden">
-            {countStars(rating)}
+          <div >
+            <Ratings ratingNumber={rating} ></Ratings>
           </div>
         </div>
         <div className="w-full h-[2px] bg-[#c6c6c6]  my-3"></div>
