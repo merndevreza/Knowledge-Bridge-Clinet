@@ -23,6 +23,6 @@ const Ratings = ({ratingNumber}) => {
    );
 };
 Ratings.propTypes={
-   ratingNumber:PropTypes.number
+   ratingNumber:PropTypes.string
 }
 export default Ratings;

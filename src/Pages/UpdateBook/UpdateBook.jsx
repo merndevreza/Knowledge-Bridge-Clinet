@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const UpdateBook = () => {
   const loadedProduct = useLoaderData();
-  const { _id, bookName, authorName, photo, category, rating } = loadedProduct;
+  const { _id, bookName, authorName, photo, category, rating,quantity } = loadedProduct;
 
   const handleUpdateBook = (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ const UpdateBook = () => {
       photo,
       category,
       rating,
+      quantity
     };
     axios.patch(`http://localhost:5000/books/${_id}`,updateBook)
     .then(res=>{

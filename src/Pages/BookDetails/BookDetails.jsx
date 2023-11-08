@@ -9,8 +9,18 @@ import {
   BsFillEnvelopeHeartFill,
 } from "react-icons/bs";
 import "./BookDetails.css";
-import author from "../../assets/images/author.png"
+import author from "../../assets/images/author.png";
+import logo from "../../assets/images/logo/logo-1.png";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
+
+//==========
+//component
+//==========
 const BookDetails = () => {
+  const { currentUser } = useContext(AuthContext);
   const loadedBook = useLoaderData();
   const {
     _id,
@@ -19,43 +29,157 @@ const BookDetails = () => {
     photo,
     category,
     rating,
+    quantity,
     shortDescription,
-    content,
   } = loadedBook;
 
+  const [availableQuantity, setAvailableQuantity]=useState(quantity)
+
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+  const day = today.getDate();
+  const currentDate = year + "-" + month + "-" + day;
+
+  const handleBorrowBook = (e) => {
+    const form = e.target;
+    const returnDate = form.date.value;
+    const borrowedBook = {
+      book: loadedBook,
+      userName: currentUser.displayName,
+      userEmail: currentUser.email,
+      borrowedDate:currentDate,
+      returnDate,
+    };
+    axios
+      .post("http://localhost:5000/borrowed-books", borrowedBook)
+      .then((res) => {
+        setAvailableQuantity(availableQuantity - 1);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Congrats!!",
+            text: "Successfully added a book",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: `${error.message}`,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+      const updateBookQuantity={
+        bookName, authorName, photo, category, rating,
+        quantity: availableQuantity
+      }
+      axios.patch(`http://localhost:5000/books/${_id}`,updateBookQuantity)
+      .then(res=>{
+        console.log(res.data);
+      })
+      .catch(error=>{
+        console.log(error);
+      })
+    
+  };
+  //UPDATE AFTER BORROW A BOOK
+//   const [isBorrowed, setIsBorrowed]= useState(false)
+//   const [userBorrowedBooks, setUserBorrowedBooks]=useState([])
+//   useEffect(()=>{
+//     axios.get(`http://localhost:5000/borrowed-books/${currentUser.email}`)
+//     .then(res=>{
+//       setUserBorrowedBooks(res.data)
+//     })
+//     .catch(error=>{
+//       console.log(error.message);
+//     })
+//   },[availableQuantity,currentUser.email])
+// console.log(userBorrowedBooks);
   return (
-    <div className="bg-white">
-      <div className="max-w-7xl mx-auto py-[100px] flex gap-7">
-        <div className="w-1/2">
+    <div className="dark:bg-theme-dark bg-white px-2 ">
+      <div className="max-w-7xl mx-auto py-[100px] flex flex-col md:flex-row gap-7">
+        <div className="w-full md:w-1/2">
           <Link to="/" className="book-container">
             <div className="book">
               <img alt="" src={photo} />
             </div>
           </Link>
           <div className="mt-24">
-            <button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white mb-5 px-6">
+            <button
+              onClick={() => document.getElementById("my_modal_4").showModal()}
+              className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white mb-5 px-6"
+            >
               Borrow Now
             </button>
-            <button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6">
-              Start Reading
-            </button>
+            <Link to={`/read/${_id}`}>
+              <button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6">
+                Start Reading
+              </button>
+            </Link>
+          </div>
+          <div>
+            <dialog id="my_modal_4" className="modal">
+              <div className="modal-box max-w-3xl text-center">
+                <div className="mb-4">
+                  <img className="w-[150px] mx-auto" src={logo} alt="" />
+                </div>
+                <h3 className="font-bold text-3xl">
+                  Wants to borrow this book ?
+                </h3>
+                <div className="modal-action block">
+                  <form
+                    onSubmit={handleBorrowBook}
+                    className="flex justify-start flex-col "
+                    method="dialog"
+                  >
+                    <label
+                      className="text-xl font-bold text-theme-golden"
+                      htmlFor="date"
+                    >
+                      Select Return Date:
+                    </label>
+                    <input
+                      className="bg-[#fce7b2] rounded-full w-1/2 mb-4 mx-auto py-4 px-2"
+                      type="date"
+                      name="date"
+                      id="date"
+                    />
+                    <p>
+                      <input
+                        className="btn  rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6"
+                        type="submit"
+                        value="Submit"
+                      />
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </dialog>
           </div>
         </div>
         <div className="w-full">
-          <p className="text-xl text-[#4d4d4d] uppercase font-bold border-b-2 border-[#acabab] mb-6 pb-2">
-            {category}
-          </p>
+          <div className="border-b-2 border-[#acabab] mb-6 pb-2 flex justify-between">
+            <p className="text-xl dark:text-white text-[#4d4d4d] uppercase font-bold ">
+              {category}
+            </p>
+            <strong className="flex items-center gap-2 text-lg text-white bg-theme-black px-3 py-1 rounded-full">
+              Available: {availableQuantity}
+            </strong>
+          </div>
 
           <h2 className="text-3xl font-bold text-theme-golden">{bookName}</h2>
           <div className="my-2 text-xl">
             <Ratings ratingNumber={rating}></Ratings>
           </div>
-          <h3 className="text-xl">
+          <h3 className="text-xl dark:text-white ">
             Author: <span className="text-theme-golden">{authorName}</span>
           </h3>
-          <p className="mt-6 text-lg">{shortDescription}</p>
+          <p className="mt-6 text-lg dark:text-white ">{shortDescription}</p>
           <div className="mt-20">
-            <p className="text-xl text-[#4d4d4d] uppercase font-bold border-b-2 border-[#acabab] mb-6 pb-2">
+            <p className="text-xl text-[#4d4d4d] uppercase font-bold border-b-2 border-[#acabab] mb-6 pb-2 dark:text-white ">
               Book Details
             </p>
             <div className="overflow-x-auto">
@@ -96,10 +220,10 @@ const BookDetails = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto ">
-        <p className="text-xl text-[#4d4d4d] uppercase font-bold border-b-2 border-[#acabab] mb-6 pb-2">
+        <p className="text-2xl dark:text-white  text-[#4d4d4d] uppercase font-bold border-b-2 border-[#acabab] mb-6 pb-2">
           About Author
         </p>
-        <div className="flex gap-8">
+        <div className="flex gap-8 dark:text-white ">
           <div className="flex flex-col justify-between">
             <img
               className="w-[180px] h-[180px] rounded-full object-cover object-top"
@@ -108,19 +232,19 @@ const BookDetails = () => {
             />
             <div className=" flex justify-center gap-2">
               <Link
-                className="inline-block p-2  rounded-full border-2  border-theme-golden text-xl"
+                className="inline-block p-2 hover:text-white hover:border-theme-golden dark:hover:border-white  rounded-full border-2 hover:bg-theme-golden text-xl"
                 to="/"
               >
                 <RiTwitterXFill />
               </Link>
               <Link
-                className="inline-block p-2  rounded-full border-2 border-theme-golden text-xl"
+                className="inline-block p-2 hover:bg-theme-golden hover:text-white hover:border-theme-golden dark:hover:border-white  rounded-full border-2 text-xl"
                 to="/"
               >
                 <BiLogoLinkedin />
               </Link>
               <Link
-                className="inline-block p-2  rounded-full border-2 border-theme-golden text-xl "
+                className="inline-block p-2 hover:bg-theme-golden hover:text-white hover:border-theme-golden dark:hover:border-white rounded-full border-2 text-xl "
                 to="/"
               >
                 <RiFacebookFill />
@@ -157,15 +281,15 @@ const BookDetails = () => {
             </ul>
           </div>
         </div>
-        <div className="mt-14">
-          <h4 className="text-2xl border-b-2 border-[#ddd]">Short Bio</h4>
+        <div className="mt-14 dark:text-white ">
+          <h4 className="text-2xl border-b-2 border-[#ddd]">Short Biography</h4>
           <p className="my-5">
             {authorName} is hailed as the greatest writer in the English
             language and the world&apos;s foremost dramatist. Widely celebrated
-            as England&apos;s national poet and affectionately known as the
-            Bard of Avon, {authorName}&apos;s enduring legacy continues to
-            captivate and inspire readers, scholars, and theatergoers alike.
-            Born and raised in Stratford-upon-Avon, Warwickshire,
+            as England&apos;s national poet and affectionately known as the Bard
+            of Avon, {authorName}&apos;s enduring legacy continues to captivate
+            and inspire readers, scholars, and theatergoers alike. Born and
+            raised in Stratford-upon-Avon, Warwickshire,
             {authorName}&apos;s journey from humble beginnings led to his
             remarkable contributions to literature and theater. At the age of
             18, he married Anne Hathaway, and the couple had three children.
@@ -179,16 +303,16 @@ const BookDetails = () => {
             In London, he embarked on a prosperous career as an actor, writer,
             and co-owner of the Lord Chamberlain&apos;s Men, later renamed the
             King&apos;s Men. In the final years of his life, he returned to
-            Stratford, where he passed away at the age of 52. {authorName}&apos;s
-            private life remains shrouded in mystery, giving rise to various
-            speculations. Nonetheless, his literary brilliance endures, with
-            iconic works such as Hamlet, Romeo and Juliet, Othello, King
-            Lear, and Macbeth continuing to be celebrated as some of the
-            finest contributions to the English language. His legacy was
-            solidified by the posthumous publication of the First Folio in 1623,
-            a definitive collection of his plays, accompanied by Ben
-            Jonson&apos;s prophetic tribute, declaring {authorName} to be not of
-            an age, but for all time.
+            Stratford, where he passed away at the age of 52. {authorName}
+            &apos;s private life remains shrouded in mystery, giving rise to
+            various speculations. Nonetheless, his literary brilliance endures,
+            with iconic works such as Hamlet, Romeo and Juliet, Othello, King
+            Lear, and Macbeth continuing to be celebrated as some of the finest
+            contributions to the English language. His legacy was solidified by
+            the posthumous publication of the First Folio in 1623, a definitive
+            collection of his plays, accompanied by Ben Jonson&apos;s prophetic
+            tribute, declaring {authorName} to be not of an age, but for all
+            time.
           </p>
         </div>
       </div>
