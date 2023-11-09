@@ -36,14 +36,14 @@ const Testimonial = () => {
                   Adventures in the Kitchen
                 </h2>
                 <div className="text-xl">
-                  <Ratings ratingNumber={5}></Ratings>
+                  <Ratings ratingNumber={"5"}></Ratings>
                 </div>
               </div>
               <p className="capitalize font-bold text-xl dark:text-white">
                 By: James Turner
               </p>
             </div>
-            <div className="mt-5 bg-[#fff] dark:bg-theme-dark shadow p-5 rounded-lg ">
+            <div className="mt-5 bg-[#fff] dark:bg-theme-dark  p-5 rounded-lg ">
               <div>
                 <img
                   className="w-[70px] rounded-full h-[70px] object-cover"
@@ -79,14 +79,14 @@ const Testimonial = () => {
                 The Science of Wonder
                 </h2>
                 <div className="text-xl">
-                  <Ratings ratingNumber={5}></Ratings>
+                  <Ratings ratingNumber={"5"}></Ratings>
                 </div>
               </div>
               <p className="capitalize font-bold text-xl dark:text-white">
                 By: Olivia Roberts
               </p>
             </div>
-            <div className="mt-5 bg-[#fff] dark:bg-theme-dark shadow p-5 rounded-lg ">
+            <div className="mt-5 bg-[#fff] dark:bg-theme-dark  p-5 rounded-lg ">
               <div>
                 <img
                   className="w-[70px] rounded-full h-[70px] object-cover"
@@ -116,14 +116,14 @@ const Testimonial = () => {
                 Discovering the Universe
                 </h2>
                 <div className="text-xl">
-                  <Ratings ratingNumber={5}></Ratings>
+                  <Ratings ratingNumber={"5"}></Ratings>
                 </div>
               </div>
               <p className="capitalize font-bold text-xl dark:text-white">
                 By: Sophie Williams
               </p>
             </div>
-            <div className="mt-5 bg-[#fff] dark:bg-theme-dark shadow p-5 rounded-lg ">
+            <div className="mt-5 bg-[#fff] dark:bg-theme-dark  p-5 rounded-lg ">
               <div>
                 <img
                   className="w-[70px] rounded-full h-[70px] object-cover"

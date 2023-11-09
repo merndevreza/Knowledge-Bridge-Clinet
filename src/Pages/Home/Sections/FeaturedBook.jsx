@@ -11,7 +11,7 @@ const FeaturedBook = () => {
          <div className="flex justify-center flex-col py-4">
             <h3 className="text-2xl lg:text-4xl xl:text-5xl dark:text-white text-theme-golden">Mastering on Green Flat Design</h3>
             <p className="text-xl my-3 dark:text-white ">By: Farrah Whisenhunt</p>
-            <Ratings ratingNumber={5}></Ratings>
+            <Ratings ratingNumber={"5"}></Ratings>
         <Link to={"/details/6549b07f51861e80cd623b0d"}><button className="btn px-6 rounded-none bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl mt-7 font-bold text-white">Read Now
         </button></Link>
          </div>

@@ -1,12 +1,11 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BookCard from "../Shared/BookCard/BookCard";
-import { AuthContext } from "../../Provider/AuthProvider";
+
 
 const AllBooks = () => {
   const [loadedBooks, setLoadedBooks] = useState([]);
   const [books, setBooks] = useState([]);
-  const { currentUser } = useContext(AuthContext);
   useEffect(() => {
     axios
       .get("https://b8a11-server-side-merndevreza.vercel.app/books",{withCredentials:true})
@@ -14,30 +13,6 @@ const AllBooks = () => {
         setLoadedBooks(res.data);
         setBooks(res.data);
       });
-  }, []);
-  useEffect(() => {
-    const loggedUser = { email: currentUser?.email };
-    //if user exist
-    if (currentUser) {
-      axios
-        .post("https://b8a11-server-side-merndevreza.vercel.app/jwt", loggedUser, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }else{
-      // if user logged out, the token will be removed
-      axios.post("https://b8a11-server-side-merndevreza.vercel.app/log-out",loggedUser,{withCredentials:true}).then((res) => {
-        console.log(res.data);
-      })
-      .catch(error=>{
-        console.log(error);
-      })
-    }
   }, []);
   let availableBooks = [];
   let stockOutBooks = [];
