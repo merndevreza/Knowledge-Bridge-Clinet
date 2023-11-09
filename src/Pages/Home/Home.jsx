@@ -1,11 +1,11 @@
-import Category from "./Sections/Category";
+import BooksCategories from "./Sections/BooksCategories";
 import Hero from "./Sections/Hero";
 
 const Home = () => {
    return (
-      <div>
+      <div className="bg-white dark:bg-theme-dark">
          <Hero></Hero>
-         <Category></Category>
+         <BooksCategories></BooksCategories>
       </div>
 
    );
