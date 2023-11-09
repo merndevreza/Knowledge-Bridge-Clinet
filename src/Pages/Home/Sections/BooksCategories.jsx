@@ -34,9 +34,8 @@ const BooksCategories = () => {
 
   return (
     <div className="container mx-auto dark:bg-theme-dark py-20">
-      <SectionTitle></SectionTitle>
+      <SectionTitle title={"Books Category"} subTitle={"The largest library in Dhaka houses a vast collection of over 50,000 books from around the world."}></SectionTitle>
       <Swiper
-      
         spaceBetween={40}
         slidesPerView={slidesPerView}
         navigation={true}

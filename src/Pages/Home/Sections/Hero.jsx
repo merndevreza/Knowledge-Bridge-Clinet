@@ -1,32 +1,30 @@
-import banner1 from "../../../assets/images/banner-6.jpg"
-import banner2 from "../../../assets/images/banner-5.jpg"
-import banner3 from "../../../assets/images/banner-2.jpg"
-import banner4 from "../../../assets/images/banner-3.jpg"
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import { Link } from "react-router-dom";
+import hero from "../../../assets/images/hero.jpg"
 const Hero = () => {
    return (
-      <div>
-         <Swiper
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper md:h-[900px] "
-      >
-        <SwiperSlide >
-            <img className="w-full  h-full object-cover object-center" src={banner1} alt="" />
-          </SwiperSlide>
-        <SwiperSlide >
-            <img className="w-full  h-full object-cover object-center" src={banner2} alt="" />
-          </SwiperSlide>
-        <SwiperSlide >
-            <img className="w-full  h-full object-cover object-center" src={banner3} alt="" />
-          </SwiperSlide>
-        <SwiperSlide >
-            <img className="w-full  h-full object-cover object-center" src={banner4} alt="" />
-          </SwiperSlide>
-      </Swiper>
+      <div className="relative h-[700px] overflow-hidden">
+        <img className="h-full w-full object-cover" src={hero} alt="" />
+        <div className="w-full h-full bg-theme-black absolute left-0 top-0 opacity-50"></div>
+        <div className="absolute left-1/2 -translate-x-1/2 text-center -translate-y-1/2  top-1/2 text-white w-3/4 lg:w-1/2">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl">More Than 458,948 Book Over Here</h1>
+          <div className="flex flex-col lg:flex-row  lg:gap-5 gap-3 justify-center mt-9">
+            <Link to="/register">
+            <button
+              className="btn rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6"
+            >
+              Register Today
+            </button>
+            </Link>
+            <Link to="/">
+            <button
+              className="btn rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6"
+            >
+              Borrow Books
+            </button></Link>
+            
+          </div>
+        </div>
+
       </div>
    );
 };
