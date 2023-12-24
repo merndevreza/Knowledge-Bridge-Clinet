@@ -51,11 +51,11 @@ const AuthProvider = ({ children }) => {
   //Observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
       const loggedUser = { email: user?.email };
       //if user exist
       if (user) {
+        setCurrentUser(user);
+        setLoading(false);
         axios
           .post(
             "https://b8a11-server-side-merndevreza.vercel.app/jwt",
@@ -66,9 +66,6 @@ const AuthProvider = ({ children }) => {
           )
           .then((res) => {
             console.log(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
           });
       } else {
         // if user logged out, the token will be removed
@@ -80,9 +77,6 @@ const AuthProvider = ({ children }) => {
           )
           .then((res) => {
             console.log(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
           });
       }
     });

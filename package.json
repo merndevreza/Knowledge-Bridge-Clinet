@@ -20,6 +20,7 @@
     "react-icons": "^4.11.0",
     "react-pageflip": "^2.0.3",
     "react-router-dom": "^6.18.0",
+    "react-simple-captcha": "^9.3.0",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.9.0",
     "swiper": "^11.0.3"

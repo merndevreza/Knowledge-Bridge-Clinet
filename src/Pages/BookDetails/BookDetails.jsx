@@ -11,7 +11,7 @@ import {
 import "./BookDetails.css";
 import author from "../../assets/images/author.png";
 import logo from "../../assets/images/logo/logo-1.png";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -85,6 +85,36 @@ const BookDetails = () => {
       })
     
   };
+  //handle pre booking 
+  const handlePreBooking=(e)=>{
+    const form = e.target;
+    const userEmail=form.email.value;
+    const preBookingInfo={
+      userEmail,
+      userName: currentUser.displayName,
+    }
+    axios
+      .post("https://b8a11-server-side-merndevreza.vercel.app/pre-bookings", preBookingInfo)
+      .then(res=>{
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Congrats!!",
+            text: "Successfully booked for this book",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: `${error.message}`,
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+
+  }
   //UPDATE AFTER BORROW A BOOK
 //   const [isBorrowed, setIsBorrowed]= useState(false)
 //   const [userBorrowedBooks, setUserBorrowedBooks]=useState([])
@@ -108,12 +138,27 @@ const BookDetails = () => {
             </div>
           </Link>
           <div className="mt-24">
-            <button
-              onClick={() => document.getElementById("my_modal_4").showModal()}
+            {
+              availableQuantity <1 ? 
+              <div><button
+              disabled 
+                  className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-theme-golden mb-5 px-6"
+                >
+                  Borrow Now
+                </button> 
+          <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
               className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white mb-5 px-6"
             >
-              Borrow Now
-            </button>
+              Pre booking
+            </button></div>:<button
+              
+                  onClick={() => document.getElementById("my_modal_4").showModal()}
+                  className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white mb-5 px-6"
+                >
+                  Borrow Now
+                </button> 
+            }
             <Link to={`/read/${_id}`}>
               <button className="btn w-full rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6">
                 Start Reading
@@ -154,6 +199,47 @@ const BookDetails = () => {
                         value="Submit"
                       />
                     </p>
+                  </form>
+                </div>
+              </div>
+            </dialog>
+          </div>
+          <div>
+            <dialog id="my_modal_5" className="modal">
+              <div className="modal-box max-w-3xl text-center">
+                <div className="mb-4">
+                  <img className="w-[150px] mx-auto" src={logo} alt="" />
+                </div>
+                <h3 className="font-bold text-3xl">
+                  Pre-Booking
+                </h3>
+                <p>We will send an email when this book will be available</p>
+                <div className="modal-action block">
+                  <form 
+                  onSubmit={handlePreBooking}
+                    className="flex justify-start flex-col "
+                    method="dialog"
+                  >
+                    <label
+                      className="text-xl font-bold text-theme-golden"
+                      htmlFor="email"
+                    >
+                      Your Email:
+                    </label>
+                    <input
+                    defaultValue={currentUser.email}
+                      className="bg-[#fce7b2] text-theme-black text-center rounded-full w-1/2 mb-4 mx-auto py-4 px-2"
+                      type="email"
+                      name="email"
+                      id="email"
+                    />
+                    <div>
+                    <input
+                        className="btn  rounded-full bg-theme-golden border-none hover:bg-theme-black dark:hover:bg-white dark:hover:text-theme-golden text-xl font-bold text-white px-6"
+                        type="submit"
+                        value="Submit"
+                      />
+                    </div>
                   </form>
                 </div>
               </div>
