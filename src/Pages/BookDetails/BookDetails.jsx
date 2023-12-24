@@ -90,6 +90,7 @@ const BookDetails = () => {
     const form = e.target;
     const userEmail=form.email.value;
     const preBookingInfo={
+      book: loadedBook,
       userEmail,
       userName: currentUser.displayName,
     }
