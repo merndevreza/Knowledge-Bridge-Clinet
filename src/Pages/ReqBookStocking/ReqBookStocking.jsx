@@ -1,7 +1,10 @@
 import axios from "axios";
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ReqBookStocking = () => {
+   const { currentUser } = useContext(AuthContext);
 
    const handleBookRequest = (e) => {
       e.preventDefault();
@@ -11,6 +14,8 @@ const ReqBookStocking = () => {
       const category = form.get("category"); 
       const whyShouldStock = form.get("whyShouldStock"); 
       const bookReq={
+      userName: currentUser.displayName,
+      userEmail: currentUser.email,
         bookName,
         authorName, 
         category, 
