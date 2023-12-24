@@ -12,6 +12,7 @@ import UpdateBook from "../Pages/UpdateBook/UpdateBook";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import BookDetails from "../Pages/BookDetails/BookDetails";
 import ReadBook from "../Pages/ReadBook/ReadBook";
+import ReqBookStocking from "../Pages/ReqBookStocking/ReqBookStocking";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <AddBook></AddBook>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/req-book",
+        element: (
+          <PrivateRoutes>
+            <ReqBookStocking></ReqBookStocking>
           </PrivateRoutes>
         ),
       },
